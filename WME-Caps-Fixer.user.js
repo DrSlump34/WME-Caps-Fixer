@@ -9,7 +9,7 @@
 // @name:he      WME Caps Fixer
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNOC41IDE4IFYyMi41IE0xNS41IDE4IFYyMi41IiBzdHJva2U9IiM2MDdkOGIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHJlY3QgeD0iMiIgeT0iNi41IiB3aWR0aD0iMjAiIGhlaWdodD0iMTIiIHJ4PSIyLjgiIGZpbGw9IiM2MDdkOGIiLz48cGF0aCBkPSJNNi4yIDE1LjYgTDkgOSBMMTEuOCAxNS42IE03LjIgMTMuNCBIMTAuOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTUuNyIgY3k9IjEzLjIiIHI9IjIuMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjgiLz48cGF0aCBkPSJNMTcuOTUgMTAuOCBWMTUuNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iNSIgY3k9IjUuMiIgcj0iNCIgZmlsbD0iI2ZiOGMwMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuMiIvPjxwYXRoIGQ9Ik02LjYgNS40IEExLjcgMS43IDAgMSAxIDUuMSAzLjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik00LjQgMi42IEw2LjEgMy41IEw0LjYgNC43IFoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=
 // @namespace    https://github.com/DrSlump34
-// @version      0.02.03
+// @version      0.02.04
 // @description  Fix the capitalization of street and city names on segments (primary and alternate names), country by country — typically names imported in ALL CAPS from GIS data. Preview first, nothing is saved for you.
 // @description:fr Corrige la casse des noms de rue et de ville des segments (adresse principale et alternatives), pays par pays — typiquement des noms importés tout en MAJUSCULES depuis des SIG. Aperçu d'abord ; rien n'est enregistré à votre place.
 // @description:de Korrigiert die Groß-/Kleinschreibung der Straßen- und Stadtnamen von Segmenten (Haupt- und alternative Adressen), Land für Land — typischerweise Namen, die IN GROSSBUCHSTABEN aus GIS-Daten importiert wurden. Zuerst eine Vorschau; nichts wird für dich gespeichert.
@@ -21,6 +21,10 @@
 // @author       DrSlump34
 // @copyright    DrSlump34 2026
 // @license      MIT
+// @homepageURL  https://github.com/DrSlump34/WME-Caps-Fixer
+// @supportURL   https://www.waze.com/discuss/t/script-wme-caps-fixer/416514
+// @downloadURL  https://update.greasyfork.org/scripts/604373/WME%20Caps%20Fixer.user.js
+// @updateURL    https://update.greasyfork.org/scripts/604373/WME%20Caps%20Fixer.meta.js
 // @match        https://www.waze.com/*/editor*
 // @match        https://www.waze.com/editor*
 // @match        https://beta.waze.com/*/editor*
@@ -365,11 +369,11 @@
     const SCRIPT_NAME = 'WME Caps Fixer';
     const VERSION = (typeof GM_info !== 'undefined' && GM_info.script && GM_info.script.version) || 'dev';
     const BAR_ID = 'wcf-bar';
-    // Adresses publiques. GreasyFork et Discuss n'ont pas encore de numéro à la première publication :
-    // GF renvoie alors à une recherche, et le lien Discuss n'est pas affiché tant que URL_DISCUSS est nul.
+    // Adresses publiques (publié le 08/11/2026 : GreasyFork 604373, Discuss 416514). Le lien Discuss
+    // n'est affiché que si URL_DISCUSS est renseigné.
     const URL_GH = 'https://github.com/DrSlump34/WME-Caps-Fixer';
-    const URL_GF = 'https://greasyfork.org/scripts?q=WME+Caps+Fixer';
-    const URL_DISCUSS = null;
+    const URL_GF = 'https://greasyfork.org/scripts/604373-wme-caps-fixer';
+    const URL_DISCUSS = 'https://www.waze.com/discuss/t/script-wme-caps-fixer/416514';
     const OPTS_KEY = 'wcf.opts';
     const OPTS_DEF = { voieEntiere: true, majusculesInconnues: false, forcerPetitsMots: false, pays: 'auto' };
     // Avec GM_xmlhttpRequest (pastille de nouvelle version, accord de l'auteur du 08/11/2026), le
